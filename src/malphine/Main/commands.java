@@ -76,20 +76,14 @@ public class commands extends ListenerAdapter {
 
                     }
                     if ((page.select(placeHolder).text().charAt(0) == 'G')) {
-                        Genres= page.select(placeHolder).text();
+                        Genres= page.select(placeHolder + " > a" ).text();
 
                     }
 
                 }
 
-                Genres = clear(Genres);
-                episode = clear(episode);
 
-                String[] orgGenre = clearGenre(Genres);
-                Genres = "";
-                for (int i =0 ; i < orgGenre.length; i++) {
-                    Genres += orgGenre[i] + " ";
-                }
+                episode = clear(episode);
 
 
 
@@ -125,48 +119,12 @@ public class commands extends ListenerAdapter {
         return  sbWord.toString();
     }
 
-    public static String[] clearGenre(String Genres) {
-        String[] words =  Genres.split("\\s+");;
 
-        boolean counter = false;
-
-        int deleter = 0;
-
-
-        for (int i = 0; i < words.length; i++) {
-            StringBuilder sbGenre = new StringBuilder(words[i]);
-            for (int ii = 0; ii < words[i].length(); ii++) {
-
-                if (words[i].charAt(ii) == Character.toUpperCase(words[i].charAt(ii)) && ii != 0 && words[i].charAt(ii) != ',') {
-                    counter = true;
-                    deleter = ii;
-                }
-                if (counter) {
-                    if (sbGenre.charAt(deleter) == ',') {
-                        words[i] = sbGenre.toString();
-                        break;
-                    }
-                    sbGenre.deleteCharAt(deleter);
-                }
-                if (ii == words[i].length() -1) {
-                    words[i] = sbGenre.toString();
-                }
-
-            }
-            deleter =0;
-            counter = false;
-
-
-        }
-
-
-        return words;
-    }
     public static String getScore(Element page) {
         String  placeHolder ="td div.score-label.score-8"  ;
 
 
-        for (int i =6; i < 9; i++) {
+        for (int i =6; i < 10; i++) {
         placeHolder ="td div.score-label.score-" + i;
 
             if (!page.select(placeHolder).text().equalsIgnoreCase("")) {

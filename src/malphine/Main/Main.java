@@ -14,9 +14,7 @@ public class Main {
     public static String prefix = "~";
 
     public static void main(String[] args) throws LoginException {
-        jda = JDABuilder.createDefault("OTAxOTEzODA2ODgyNjA3MTE0.YXWysA.0JNjPQZ2m0Vye7XszSp31G2vZtg").build();
+        jda = JDABuilder.createDefault("OTAxOTEzODA2ODgyNjA3MTE0.YXWysA.5VN-6ZT1mRRrKs7sLSam0sQ5Gvk").build();
         jda.addEventListener(new commands());
-
-
     }
 }
