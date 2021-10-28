@@ -22,21 +22,11 @@ public class commands extends ListenerAdapter {
         String[] args = event.getMessage().getContentRaw().split(" ");
 
         if (args[0].equalsIgnoreCase(Main.prefix + "search") && args.length > 1) {
-            String input = "";
+            String word = "";
             for (int i =0; i < args.length; i ++) {
                 if (i != 0){
-                    input += args[i];
-                }
-            }
-
-            String[] words;
-
-
-            words = input.split("\\s+");
-            String word = "";
-            if (words.length != 0) {
-                for (String s : words) {
-                    word += s + "%20";
+                    System.out.println(args[i]);
+                    word += args[i]+ "%20";
                 }
             }
             var embed = new EmbedBuilder();
@@ -59,11 +49,7 @@ public class commands extends ListenerAdapter {
                 e.printStackTrace();
             }
 
-
-
-
             final Document page;
-
             String episode = "NA";
             String Genres = "NA";
             try {
@@ -93,7 +79,7 @@ public class commands extends ListenerAdapter {
                 embed.addField("Episodes", episode, true );
                 embed.addField("Genres", Genres, true );
                 embed.setFooter("SCORE: " +  page.select(getScore(page)).text());
-                embed.setColor(Color.BLUE);
+                embed.setColor(Color.PINK);
                 event.getChannel().sendMessage(embed.build()).queue();
 
 
